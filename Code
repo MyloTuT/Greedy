@@ -1,0 +1,40 @@
+/********************************************************************
+*Greedy.c by Mylo Ray
+*
+*
+*Print out amount of change that the user provides
+*********************************************************************/
+
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    //Prompt user for amount of change and collect. 
+    float change;
+    
+  do
+    {
+        printf ("How much change is owed?:");
+        change = GetFloat();
+    }
+    while (change <= 0);
+    
+    
+    //Round and convert change
+    int coins = roundf (change * 100);
+    
+    
+    //Divide by coins
+	int quarters = ( coins / 25 );
+    int dimes = ( (coins % 25) / 10 );
+    int nickels = ( ((coins % 25) % 10) / 5 ); 
+    int pennies = ( (((coins % 25) % 10) % 5) / 1 );
+    
+    //Print Change Total
+    printf ("Total Coins:%d", quarters + dimes + nickels + pennies);
+            
+    
+    return 0;
+}
